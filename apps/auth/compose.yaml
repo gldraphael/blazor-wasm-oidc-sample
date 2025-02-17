@@ -1,0 +1,28 @@
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:${KEYCLOAK_VERSION}
+    ports:
+      - "7572:8080"
+    environment:
+      - KC_BOOTSTRAP_ADMIN_USERNAME=${KEYCLOAK_USER}
+      - KC_BOOTSTRAP_ADMIN_PASSWORD=${KEYCLOAK_PASSWORD}
+      - KC_DB=${KEYCLOAK_DATABASE_VENDOR}
+      - KC_DB_URL_DATABASE=${KEYCLOAK_DATABASE_NAME}
+      - KC_DB_URL_HOST=${KEYCLOAK_DATABASE_HOST}
+      - KC_DB_USERNAME=${KEYCLOAK_DATABASE_USER}
+      - KC_DB_PASSWORD=${KEYCLOAK_DATABASE_PASSWORD}
+
+    command:
+      - "--verbose"
+      - "start"
+      - "--features=token-exchange"
+      - "--features-disabled=impersonation,docker"
+      - "--http-enabled=true"
+      - --hostname=http://localhost:7572
+      - --hostname-debug=true
+      - "--spi-events-listener-jboss-logging-success-level=info"
+      - "--spi-events-listener-jboss-logging-error-level=debug"
+      - "--spi-theme-static-max-age=-1"
+    depends_on:
+      postgres:
+        condition: service_healthy
