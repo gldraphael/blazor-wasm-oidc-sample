@@ -17,12 +17,19 @@ services:
       - "start"
       - "--features=token-exchange"
       - "--features-disabled=impersonation,docker"
+      - "--import-realm"
       - "--http-enabled=true"
       - --hostname=http://localhost:7572
       - --hostname-debug=true
       - "--spi-events-listener-jboss-logging-success-level=info"
       - "--spi-events-listener-jboss-logging-error-level=debug"
       - "--spi-theme-static-max-age=-1"
+
+    volumes:
+      - ./example-realm.json:/opt/keycloak/data/import/example-realm.json
+
+    restart: unless-stopped
+
     depends_on:
       postgres:
         condition: service_healthy
