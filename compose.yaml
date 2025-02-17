@@ -3,3 +3,4 @@ name: e
 include:
   - ./apps/db/compose.yaml
   - ./apps/auth/compose.yaml
+  - ./apps/product/compose.yaml

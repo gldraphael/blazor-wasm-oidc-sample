@@ -1,0 +1,6 @@
+services:
+  wasmapp:
+    build:
+      context: .
+    ports:
+      - "7573:8080"
