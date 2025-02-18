@@ -1,6 +1,6 @@
 # Blazor WASM + Keycloak OIDC example
 
-This is a sample to demonstrate that long user sessions for Blazor WASM applications.
+This is a sample to demonstrate long user sessions for Blazor WASM applications.
 
 ## Running this sample
 
@@ -30,6 +30,6 @@ Wait for the logs to settle down before proceeding.
 
 1. Go to wasm-app at `http://localhost:7573`.
 1. Click on the Login link, and login with the user created in the previous step.
-1. Open developer tools and clear session storage, and refresh the page. 
+1. Open developer tools and clear session storage, and refresh the page.
 
 You will still remain logged in, as expected.
